@@ -252,68 +252,6 @@
 //			},
 		},
 		mounted:function(){
-			var this_1=this;
-			if(!localStorage.getItem("ids") || localStorage.getItem("ids")=='undefined' || localStorage.getItem("ids")==''){
-//				this.$router.push('/login');
-				this.packetShow=true	//领取红包
-				this.modelShow=true		//遮罩层
-				return;
-			}
-			
-			//预先存储用户分润号
-			http('post','/hb/hbDistribution/beforeSave',{'memberid':localStorage.getItem("ids")},beforeSave)
-			function beforeSave(){
-				
-			}
-
-			//获取用户资产总额
-			http('post','/platform/zlCapital/getCapitalTotal',{'id':this.sid},getCapitalTotal)
-			function getCapitalTotal(x){
-				console.log('获取用户资产总额',x);
-				this_1.CapitalTotal=x;
-			}
-			
-//			//用户分享剩余可领现金券
-//			http('post','/platform/zlShareGetDb/lastShareDb',{'id':this.sid},lastShareDb)
-//			function lastShareDb(x){
-//				console.log('用户分享剩余可领现金券',x)
-//			}
-			
-			//判断用户是否可以申请店铺
-			http('post','/mall/mobile/shopManagerUserBind/sqShopStatus',{'mid':this.sid},sqShopStatus)
-			function sqShopStatus(x){
-				console.log('判断用户是否可以申请店铺',x);
-				this_1.sqShopStatus=x;
-			}
-
-			//判断是否是商家
-			http('post','/mall/mobile/shopManagerUserBind/isShop',{'mid':this.sid},isShop);
-			function isShop(x){
-				console.log('判断是否是商家',x);
-				this_1.isShop=x
-			}
-			
-			//判断是否是城市合伙人;
-			http('post','/mall/mobile/agentinfo/isAgentinfo',{'mid':this.sid},isAgentinfo)
-			function isAgentinfo(x){
-				console.log('判断是否是城市合伙人',x);
-				this_1.isAgent=x;
-			}
-			
-			 //hb消费总记录
-//			this.axios.get(liupeilin_ip+'/mall/mobile/memberredpacketrecord/getMemberredpacketrecordByMemberId').then((res)=>{
-//					this.data=res.data.data
-//				},response => {
-//			       	console.log("error");
-//			 });
-			 
-			 //累计分润显示
-			var data={memberId:this.sid};
-			ajaxs("post",liupeilin_ip+"/hb/hbDistribution/hbindex",data,this.hbBalance)
-			
-			//显示用户信息
-//			var datas={uId:this.sid};
-//			ajaxs("post",liupeilin_ip+"/platform/cmembers/showUserInfo",datas,this.user)
 			
 			var circle = {
 			        x : 125,    //圆心的x轴坐标值
@@ -330,8 +268,6 @@
 			var ctx_3 = canvas_3.getContext("2d");
 			  	ctx_3.translate(circle.x, circle.y)
 			  	
-				
-					
 		    		//大的半圆
 			    	ctx.beginPath();	//新的开始
 			    	ctx.strokeStyle = "#FFFFFF";
@@ -396,6 +332,70 @@
 				ctx_3.beginPath()
 				ctx_3.arc(65, 0, 4, 0, Math.PI * 2, false)
 				ctx_3.fill()
+			
+			var this_1=this;
+			if(!localStorage.getItem("ids") || localStorage.getItem("ids")=='undefined' || localStorage.getItem("ids")==''){
+//				this.$router.push('/login');
+				this.packetShow=true	//领取红包
+				this.modelShow=true		//遮罩层
+				return;
+			}
+			
+			//预先存储用户分润号
+			http('post','/hb/hbDistribution/beforeSave',{'memberid':localStorage.getItem("ids")},beforeSave)
+			function beforeSave(){
+				
+			}
+
+			//获取用户资产总额
+			http('post','/platform/zlCapital/getCapitalTotal',{'id':this.sid},getCapitalTotal)
+			function getCapitalTotal(x){
+				console.log('获取用户资产总额',x);
+				this_1.CapitalTotal=x;
+			}
+			
+//			//用户分享剩余可领现金券
+//			http('post','/platform/zlShareGetDb/lastShareDb',{'id':this.sid},lastShareDb)
+//			function lastShareDb(x){
+//				console.log('用户分享剩余可领现金券',x)
+//			}
+			
+			//判断用户是否可以申请店铺
+			http('post','/mall/mobile/shopManagerUserBind/sqShopStatus',{'mid':this.sid},sqShopStatus)
+			function sqShopStatus(x){
+				console.log('判断用户是否可以申请店铺',x);
+				this_1.sqShopStatus=x;
+			}
+
+			//判断是否是商家
+			http('post','/mall/mobile/shopManagerUserBind/isShop',{'mid':this.sid},isShop);
+			function isShop(x){
+				console.log('判断是否是商家',x);
+				this_1.isShop=x
+			}
+			
+			//判断是否是城市合伙人;
+			http('post','/mall/mobile/agentinfo/isAgentinfo',{'mid':this.sid},isAgentinfo)
+			function isAgentinfo(x){
+				console.log('判断是否是城市合伙人',x);
+				this_1.isAgent=x;
+			}
+			
+			 //hb消费总记录
+//			this.axios.get(liupeilin_ip+'/mall/mobile/memberredpacketrecord/getMemberredpacketrecordByMemberId').then((res)=>{
+//					this.data=res.data.data
+//				},response => {
+//			       	console.log("error");
+//			 });
+			 
+			 //累计分润显示
+			var data={memberId:this.sid};
+			ajaxs("post",liupeilin_ip+"/hb/hbDistribution/hbindex",data,this.hbBalance)
+			
+			//显示用户信息
+//			var datas={uId:this.sid};
+//			ajaxs("post",liupeilin_ip+"/platform/cmembers/showUserInfo",datas,this.user)
+			
 
 		}
 	}

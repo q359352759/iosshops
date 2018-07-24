@@ -28,10 +28,12 @@
 		<div class="moneys">
 			<ul>
 				<li>
-					<router-link to="/">
+					<!--<router-link to="/">-->
+					<a>
 						<span>{{yuer? yuer:0}}元</span>
 						<i>余额</i>
-					</router-link>
+					</a>
+					<!--</router-link>-->
 				</li>
 				<li>
 					<router-link to="/money/hb">
@@ -189,7 +191,7 @@
 				if(!this.shopbool){
 					mui.toast("你不是城市合伙人")
 				}else if(this.shopbool){
-					 _this.$router.push('/business')
+			 		_this.$router.push('/business')
 				}
 			},
 			weixi:function(){
@@ -197,9 +199,6 @@
 			},
 			model:function(){
 				this.bool=!this.bool;
-			},
-			order:function(res){
-				console.log(res,888888888)
 			},
 			Balance:function(res){
 				this.hbs = res.data.hb;
@@ -216,10 +215,17 @@
 			}
 		},
 		mounted:function(){
-			console.log(localStorage.getItem("ids"))
+//			console.log(localStorage.getItem("ids"))
 			if(!localStorage.getItem("ids") || localStorage.getItem("ids")=='undefined'){
 				console.log('没有登陆')
 				this.$router.push('/login');
+			}
+			if(localStorage.userinfo && localStorage.userinfo!='' && localStorage.userinfo!='undefined'){
+				var userinfo=JSON.parse(localStorage.userinfo);
+				console.log('用户基本信息',userinfo)
+				this.url = userinfo.data.myQrcodeImg
+				this.img = userinfo.data.photo
+				this.username = userinfo.data.nick
 			}
 		},
 		created:function(){
@@ -267,10 +273,10 @@
 					}
 			 	})
 				//赚钱总金额
-				http('get','/mall/mobile/memberdividend/getSumAmountMoney?memberId='+this.sid,'',function(x){
-					console.log('赚钱总金额',x)
-					_this.make = x.data;
-				})
+//				http('get','/mall/mobile/memberdividend/getSumAmountMoney?memberId='+this.sid,'',function(x){
+//					console.log('赚钱总金额',x)
+//					_this.make = x.data;
+//				})
 			 	//判断是否是城市合伙人;
 			 	http('get','/mall/mobile/agentinfo/isAgentinfo?mid='+id,'',function(x){
 			 		console.log('判断是否是城市合伙人',x);
@@ -291,6 +297,7 @@
 				success:function(res){
 					console.log('返回用户的基本信息',res)
 					if(res.success){
+						localStorage.userinfo=JSON.stringify(res)
 						_this.url = res.data.myQrcodeImg
 						_this.img = res.data.photo
 						_this.username = res.data.nick	

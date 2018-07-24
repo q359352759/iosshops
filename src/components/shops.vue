@@ -2,7 +2,7 @@
 	<div id="book">
 		<header class="mui-bar mui-bar-nav">
 		    <!--<a class="mui-icon mui-icon-settings mui-icon-left-nav mui-pull-left"></a>-->    			    
-		    <!--<i class="scanning icon iconfont icon-saomiao mui-pull-left" @click="saoyisaos()"></i>-->
+		    <i class="scanning icon iconfont icon-saomiao mui-pull-left" @click="saoyisaos()"></i>
 		    <h1 class="mui-title">
 				<div class="query">
 					<i class="mui-icon mui-icon-search"></i>
@@ -11,7 +11,7 @@
 		    </h1>
 		    <!--<a href="" class="mui-pull-right">></a>-->
 		    <!--<a href="" class="mui-icon mui-icon-bars mui-icon-right-nav mui-pull-right"></a>-->
-		    <!--<i @click="erwei(),hidden()"  class="gengduo icon iconfont icon-qr-code mui-pull-right"></i>-->
+		    <i @click="erwei(),hidden()"  class="gengduo icon iconfont icon-qr-code mui-pull-right"></i>
 		</header>
 		<div id="slider" class="mui-slider" >
 			<div class="mui-slider-group mui-slider-loop">
@@ -78,6 +78,7 @@
 				<a href="#/shopsList?name=更多商铺&&id=10" class="mui-pull-right">更多<i class="mui-icon mui-icon-arrowright"></i></a>
 			</header>
 			<ul class="box_4_list">
+				
 				<div class="swiper_1 swiper-container">
 				    <div class="swiper-wrapper">
 				      	
@@ -208,9 +209,17 @@
 				ajaxs("post",liupeilin_ip+"/platform/redirec/index",data,this.user)
 			},
 			erwei:function(){
+				if(!localStorage.ids || localStorage.ids=='' || localStorage.ids=='undefined'){
+					mui.toast('请先登陆',{ duration:2000, type:'div' })
+					return
+				}
 				this.bool=!this.bool;			
 			},
 			hidden:function(){
+				if(!localStorage.ids || localStorage.ids=='' || localStorage.ids=='undefined'){
+					mui.toast('请先登陆',{ duration:2000, type:'div' })
+					return
+				}
 				var body = document.getElementsByTagName('body')[0];
 				body.style.overflow='hidden'
 			},
@@ -252,19 +261,25 @@
 				console.log('热门商品',res);
 			}
 		},
-		mounted:function(){
-			var _this=this	 
-
+		mounted:function(){		
+			var _this=this
+			
 			var swiper = new Swiper('#book .swiper_1', {
-	//				initialSlide:0,	//初始化显示第几个
-//					loop : true,	//循环
-			      	slidesPerView :3,
-			      	spaceBetween : 6, //间距
-			    	autoplay:true,
-			    	init: false,
-			    	virtual:true,
-			    });
-			 
+//				initialSlide:0,	//初始化显示第几个
+//				loop : true,	//循环
+		      	slidesPerView :3,
+		      	spaceBetween : 6, //间距
+		    	autoplay:true,
+		    	init: false,
+		    	virtual:true,
+//		    	preloadImages:false,	//强制加载所有图片。
+//		    	updateOnImagesReady : true,
+//				watchSlidesProgress : true,
+//				watchSlidesVisibility : true,
+//		    	lazy: {
+//			    	loadPrevNext: true,
+//			  	},
+			});
 			//热门商铺  size:每页大小
 			http('post','/mall/mobile/shop/findShopByTime',{'size':10},shopcreening);
 			function shopcreening(res){
@@ -283,11 +298,12 @@
 			      	list.push(html)
 				}
 //				setTimeout(function(){
-					swiper.virtual.cache=[];
+//					swiper.virtual.cache=[];
 				    swiper.virtual.slides=list
 				    swiper.init();
 //				},200)
 			}
+
 			
 			mui('.mui-slider').slider({
 				swipeBack:true, //启用右滑关闭功能
@@ -302,14 +318,10 @@
 					var mk = new BMap.Marker(r.point);
 					_this.pointlng = r.point.lng;
 					_this.pointlat = r.point.lat;
-				}
-				else {
+				}else{
 					alert('failed'+this.getStatus());
-				}        
-			},{enableHighAccuracy: true})
-
-
-		
+				}
+			},{enableHighAccuracy:true})
 			
 		},
 		created:function(){}
@@ -374,8 +386,8 @@
 		font-size: 0.26rem;
 		letter-spacing: 1px;
 		color: #333333;
-		height:1.22rem;
-		line-height:1.22rem;
+		height:0.8rem;
+		line-height:0.8rem;
 		text-align: center;
 	}
 	#book .mui-segmented-control.mui-scroll-wrapper .mui-control-item{
@@ -535,7 +547,7 @@
 	
 	
 	#book .box_3{
-		padding: 0.1rem 5px 0.1rem;
+		padding: 0.1rem 5px 0px 5px;
 		position: relative;
 	}
 	#book .box_3>div{

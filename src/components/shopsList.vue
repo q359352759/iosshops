@@ -4,98 +4,100 @@
 		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 		    <h1 class="mui-title">{{titleName}}</h1>
 		</header>
-		<!--<div class="mui-content">-->
-		    <div class="box_2">
-				<div class="left" v-on:click="left_1()"><i class="mui-icon mui-icon-arrowleft"></i></div>
-				<div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-				    <div class="mui-scroll">
-				        <a @click="go('餐饮',6)" href="index.html#/shopsList?name=餐饮&id=6" class="mui-control-item mui-active"><div class="img"><img src="@/assets/img/1524832441.jpg"/></div>餐饮</a>
-				        <a @click="go('娱乐',2)" href="index.html#/shopsList?name=娱乐&id=2" class="mui-control-item"><div class="img"><img src="@/assets/img/1524832853.jpg"/></div>娱乐</a>
-				        <a @click="go('休闲',1)" href="index.html#/shopsList?name=休闲&id=1" class="mui-control-item"><div class="img"><img src="@/assets/img/1524832959.jpg"/></div>休闲</a>
-				        <a @click="go('酒店',7)" href="index.html#/shopsList?name=酒店&id=7" class="mui-control-item"><div class="img"><img src="@/assets/img/1524833027.jpg"/></div>酒店</a>
-				        <a @click="go('丽人',4)" href="index.html#/shopsList?name=丽人&id=4" class="mui-control-item"><div class="img"><img src="@/assets/img/1524833085.jpg"/></div>丽人</a>
-				        <a @click="go('汽车',3)" href="index.html#/shopsList?name=汽车&id=3" class="mui-control-item"><div class="img"><img src="@/assets/img/1524833127.jpg"/></div>汽车</a>
-				        <a @click="go('培训',5)" href="index.html#/shopsList?name=培训&id=5" class="mui-control-item"><div class="img"><img src="@/assets/img/1524833173.jpg"/></div>培训</a>
-				        <!--<a class="mui-control-item"><div class="img"><img src="@/assets/img/1524833232.jpg"/></div>保健</a>
-				        <a class="mui-control-item"><div class="img"><img src="@/assets/img/1524833267.jpg"/></div>宠物</a>-->
-				        <!--<a class="mui-control-item"><div class="img"><img src="@/assets/img/1524833297.jpg"/></div>更多</a>-->
-				    </div>
-				</div>
-				<div class="right mui-hidden" v-on:click="right_1()"><i class="mui-icon mui-icon-arrowright"></i></div>
+		
+		<div class="box_2">
+			<div class="left" v-on:click="left_1()"><i class="mui-icon mui-icon-arrowleft"></i></div>
+			<div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+			    <div class="mui-scroll">
+			        <a @click="go('餐饮',6)" href="index.html#/shopsList?name=餐饮&id=6" class="mui-control-item mui-active"><div class="img"><img src="@/assets/img/1524832441.jpg"/></div>餐饮</a>
+			        <a @click="go('娱乐',2)" href="index.html#/shopsList?name=娱乐&id=2" class="mui-control-item"><div class="img"><img src="@/assets/img/1524832853.jpg"/></div>娱乐</a>
+			        <a @click="go('休闲',1)" href="index.html#/shopsList?name=休闲&id=1" class="mui-control-item"><div class="img"><img src="@/assets/img/1524832959.jpg"/></div>休闲</a>
+			        <a @click="go('酒店',7)" href="index.html#/shopsList?name=酒店&id=7" class="mui-control-item"><div class="img"><img src="@/assets/img/1524833027.jpg"/></div>酒店</a>
+			        <a @click="go('丽人',4)" href="index.html#/shopsList?name=丽人&id=4" class="mui-control-item"><div class="img"><img src="@/assets/img/1524833085.jpg"/></div>丽人</a>
+			        <a @click="go('汽车',3)" href="index.html#/shopsList?name=汽车&id=3" class="mui-control-item"><div class="img"><img src="@/assets/img/1524833127.jpg"/></div>汽车</a>
+			        <a @click="go('培训',5)" href="index.html#/shopsList?name=培训&id=5" class="mui-control-item"><div class="img"><img src="@/assets/img/1524833173.jpg"/></div>培训</a>
+			        <!--<a class="mui-control-item"><div class="img"><img src="@/assets/img/1524833232.jpg"/></div>保健</a>
+			        <a class="mui-control-item"><div class="img"><img src="@/assets/img/1524833267.jpg"/></div>宠物</a>-->
+			        <!--<a class="mui-control-item"><div class="img"><img src="@/assets/img/1524833297.jpg"/></div>更多</a>-->
+			    </div>
 			</div>
-			<div class="box_3">
-				<select name="" v-model="shop" v-for="(item,index) in categoryname" v-if="len>0"  @change="change(item.id,shop)">
-					<option class="shop_option" selected="selected">二级分类</option>
-					<option class="shop_option" value="0" >{{item.categoryname}}</option>
-				</select>
-				<select name="" v-if="len==0">
-					<option class="shop_option" value="none">二级分类</option>
-				</select>
-				<select name="" v-model="types" @change="distance(types)">
-					<option selected="selected" value="附近">附近</option>
-					<option value="1">1KM以内</option>
-					<option value="5">5KM以内</option>
-				</select>
-				<select name="" v-model="type" id="select_Sorting"  @change="Sorting(type)">
-					<option selected="selected">排序</option>
-					<option  value="0">时间排序</option>
-					<option value="1">销量排序</option>
-					<option value="2">好评率</option>
-				</select>
-				<select name="">
-					<option value="">筛选</option>
-					<option value="">好评</option>
-					<option value="">热门</option>
-				</select>
-				<div class="cb"></div>
-			</div>
-			<div class="box_4">
-				<ul class="mui-table-view">
-					<li class="mui-table-view-cell mui-media" v-for="(item,index) in data">
-				            <img class="mui-media-object mui-pull-left" :src="item.mainlogo" @click="ShopDetails(item)">
-				            <div class="mui-media-body">
-				            	<div class="right">
-				            		<img src="@/assets/img/CustomerService.png"/>
-				            		<img src="@/assets/img/Sincerity.png"/>
-				            	</div>
-				            	<div class="left">
-				            		<div class="title_1">{{item.shopname}}</div>
-				            		
-				               		<div class="address_1" @click="go_map(item.latitude,item.longitude,item.companyaddress)" ><i class="mui-icon mui-icon-location"></i><span>{{item.companyaddress}}</span></div>	
-				                	<div class="address_2"><span><i class="mui-icon mui-icon-paperplane"></i>{{item.distance}}公里</span><span class="volume">月销：<font>{{item.num? item.num:0}}</font>笔</span></div>
-				                	
-				                	<div class="Stars" v-if="item.shopname.creditrating==0 || item.shopname.creditrating==null">信誉
-				            			<i class="mui-icon mui-icon-star"></i>
-				            		</div>
-				            		<div class="Stars" v-if="item.shopname.creditrating==1">信誉
-				            			<i class="mui-icon mui-icon-star"></i>
-				            			<i class="mui-icon mui-icon-star"></i>
-				            		</div>
-				            		<div class="Stars" v-if="item.shopname.creditrating==2">信誉
-				            			<i class="mui-icon mui-icon-star"></i>
-				            			<i class="mui-icon mui-icon-star"></i>
-				            			<i class="mui-icon mui-icon-star"></i>
-				            		</div>
-				            		<div class="Stars" v-if="item.shopname.creditrating==3">信誉
-				            			<i class="mui-icon mui-icon-star"></i>
-				            			<i class="mui-icon mui-icon-star"></i>
-				            			<i class="mui-icon mui-icon-star"></i>
-				            			<i class="mui-icon mui-icon-star"></i>
-				            		</div>
-				            		<div class="Stars" v-if="item.shopname.creditrating==4">信誉
-				            			<i class="mui-icon mui-icon-star"></i>
-				            			<i class="mui-icon mui-icon-star"></i>
-				            			<i class="mui-icon mui-icon-star"></i>
-				            			<i class="mui-icon mui-icon-star"></i>
-				            			<i class="mui-icon mui-icon-star"></i>
-				            		</div>
-				            	</div>
-				            </div>
-				    </li>
-				</ul>
-			</div>
-			<div v-if="data.length==0" class="mui-text-center">暂无数据</div>
-		<!--</div>-->
+			<div class="right mui-hidden" v-on:click="right_1()"><i class="mui-icon mui-icon-arrowright"></i></div>
+		</div>
+		<div class="box_3">
+			<select name="" id="select_shop" v-model="shop" v-if="len>0"  @change="change()">
+				<option class="shop_option" value="">全部</option>
+				<option class="shop_option" :value="item.id" v-for="(item,index) in categoryname">{{item.categoryname}}</option>
+			</select>
+			<select name="" id="select_shop" v-if="len==0">
+				<option class="shop_option" value="none">暂无分类</option>
+			</select>
+			<select name="" v-model="types" @change="distance(types)">
+				<option selected="selected" value="附近">附近</option>
+				<option value="1">1KM以内</option>
+				<option value="5">5KM以内</option>
+			</select>
+			<select name="" v-model="type" id="select_Sorting"  @change="Sorting(type)">
+				<option selected="selected">排序</option>
+				<option  value="0">时间排序</option>
+				<option value="1">销量排序</option>
+				<option value="2">好评率</option>
+			</select>
+			<select name="">
+				<option value="">筛选</option>
+				<option value="">好评</option>
+				<option value="">热门</option>
+			</select>
+			<div class="cb"></div>
+		</div>
+			
+		<div class="box_4">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-media" v-for="(item,index) in data">
+			            <img class="mui-media-object mui-pull-left" :src="item.mainlogo" @click="ShopDetails(item)">
+			            <div class="mui-media-body">
+			            	<div class="right">
+			            		<img src="@/assets/img/CustomerService.png"/>
+			            		<img src="@/assets/img/Sincerity.png"/>
+			            	</div>
+			            	<div class="left">
+			            		<div class="title_1">{{item.shopname}}</div>
+			            		
+			               		<div class="address_1" @click="go_map(item.latitude,item.longitude,item.companyaddress)" ><i class="mui-icon mui-icon-location"></i><span>{{item.companyaddress}}</span></div>	
+			                	<div class="address_2"><span><i class="mui-icon mui-icon-paperplane"></i>{{item.distance}}公里</span><span class="volume">月销：<font>{{item.num? item.num:0}}</font>笔</span></div>
+			                	
+			                	<div class="Stars" v-if="item.shopname.creditrating==0 || item.shopname.creditrating==null">信誉
+			            			<i class="mui-icon mui-icon-star"></i>
+			            		</div>
+			            		<div class="Stars" v-if="item.shopname.creditrating==1">信誉
+			            			<i class="mui-icon mui-icon-star"></i>
+			            			<i class="mui-icon mui-icon-star"></i>
+			            		</div>
+			            		<div class="Stars" v-if="item.shopname.creditrating==2">信誉
+			            			<i class="mui-icon mui-icon-star"></i>
+			            			<i class="mui-icon mui-icon-star"></i>
+			            			<i class="mui-icon mui-icon-star"></i>
+			            		</div>
+			            		<div class="Stars" v-if="item.shopname.creditrating==3">信誉
+			            			<i class="mui-icon mui-icon-star"></i>
+			            			<i class="mui-icon mui-icon-star"></i>
+			            			<i class="mui-icon mui-icon-star"></i>
+			            			<i class="mui-icon mui-icon-star"></i>
+			            		</div>
+			            		<div class="Stars" v-if="item.shopname.creditrating==4">信誉
+			            			<i class="mui-icon mui-icon-star"></i>
+			            			<i class="mui-icon mui-icon-star"></i>
+			            			<i class="mui-icon mui-icon-star"></i>
+			            			<i class="mui-icon mui-icon-star"></i>
+			            			<i class="mui-icon mui-icon-star"></i>
+			            		</div>
+			            	</div>
+			            </div>
+			    </li>
+			</ul>
+		</div>
+		
+		<div v-if="data.length==0" class="mui-text-center">暂无数据</div>
+		
 	</div>	
 </template>
 <script>
@@ -115,7 +117,7 @@
 				id:"",	
 				type:"排序",
 				types:"附近",
-				shop:"二级分类",
+				shop:"",
 				pointlng:"",//我的经度
 				pointlat:"",//我的维度
 				len:""
@@ -123,10 +125,10 @@
 		},
 		methods:{
 			go(x,y){
+				this.shop='';
 				this.titleName=x;
 				this.id=y
 				this.get_BMap();
-				this.categoryname=[]//二级分类
 				ajaxs("post",liupeilin_ip+"/mall/mobile/shopcategory/findTwoidByOneid",{'id':this.id},this.resfts)
 			},
 			//筛选附近商铺
@@ -189,7 +191,8 @@
 					pointA = new BMap.Point(res[i].longitude,res[i].latitude);  
 					pointB = new BMap.Point(_this.pointlng,_this.pointlat); 
 					mile = _this.GetDistance(pointA.lat, pointA.lng, pointB.lat, pointB.lng);  
-					res[i].distance = mile					
+					res[i].distance = mile
+//					res[i].distance = '计算中'
 				}
 				this.data=res;
 				console.log(this.data)
@@ -215,22 +218,25 @@
 				this.categoryname = res
 				this.len = this.categoryname.length;
 			},
-			change:function(id,shop){
-				var data={id:id}	
-				if(shop==0){
+			change:function(){
+//				var data={id:id}
+				console.log(this.shop)
+				var _this=this;
+				if(this.shop!=''){
 					$.ajax({
 						type:"post",
 						url:liupeilin_ip+"/mall/mobile/shop/findShopByTwoId",
-						data:data,
+						data:{'id':this.shop},
 						success:function(res){
 							console.log(res);										
-							_this.data=res.data;
+							_this.data=res;
 						},
 						error:function(res){
 						}
 					});
+				}else{
+					this.get_BMap();
 				}
-					
 			},
 			Sorting:function(type){
 				var id=this.id

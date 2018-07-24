@@ -340,7 +340,6 @@
 			function tp(x){
 				this_1.Recommend_list=x
 				var list=[];
-				for(var j=0;j<3;j++){
 					for(var i=0;i<x.length;i++){
 						var html='<a href="javascrupt:;" index="'+i+'" class="swiper_box">'+
 				      				'<img src="'+x[i].imagepath_1+'"/>'+
@@ -349,7 +348,6 @@
 				      			'</a>';
 				      	list.push(html)
 					}
-				}
 				setTimeout(function(){
 					swiper.virtual.cache=[];
 				    swiper.virtual.slides=list

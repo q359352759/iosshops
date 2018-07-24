@@ -1,146 +1,150 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1">
-    <title>惠众积分</title>
-    <meta http-equiv="Pragma" content="no-cache">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1">
+		<title>惠众积分</title>
+		<meta http-equiv="Pragma" content="no-cache">
 		<meta http-equiv="Cache-Control" content="no-cache">
 		<meta http-equiv="Expires" content="0">
-    <link rel="stylesheet" type="text/css" href="static/font_hi0omcra8jrio1or/iconfont.css"/>
-    
-    <link rel="stylesheet" type="text/css" href="static/swiper422/css/swiper.css"/>
-    <link rel="stylesheet" type="text/css" href="static/mui/css/mui.min.css"/>
-    <!--lp-->
-    <link rel="stylesheet" type="text/css" href="static/font_lp/iconfont.css"/>
-    <style type="text/css">
-    	#load{
-    		position: fixed;
-    		top: 0px;
-    		left: 0px;
-    		right: 0px;
-    		bottom: 0px;
-    		width: 50px;
-    		height: 50px;
-    		background: #383838;
-    		margin: auto;
-    		border-radius: 10px;
-    		color: #FFFFFF;
+		<link rel="stylesheet" type="text/css" href="static/font_hi0omcra8jrio1or/iconfont.css" />
+
+		<link rel="stylesheet" type="text/css" href="static/swiper422/css/swiper.css" />
+		<link rel="stylesheet" type="text/css" href="static/mui/css/mui.min.css" />
+		<!--lp-->
+		<link rel="stylesheet" type="text/css" href="static/font_lp/iconfont.css" />
+		<style type="text/css">
+			#load {
+				position: fixed;
+				top: 0px;
+				left: 0px;
+				right: 0px;
+				bottom: 0px;
+				width: 50px;
+				height: 50px;
+				background: #383838;
+				margin: auto;
+				border-radius: 10px;
+				color: #FFFFFF;
 				line-height: 50px;
 				text-align: center;
 				display: none;
-    	}
-    	#load i{
-    		display: inline-block;
-    		font-size: 36px;
-    		animation: load 5s linear infinite;
-    		width: 100%;
-    		height: 100%;
-    	}
-    	@keyframes load{
-    		from{
-    			transform: rotate(0deg);
-    		}
-    		to{
-    			transform: rotate(360deg);
-    		}
-    	}
-    </style>
-  </head>
-  <body>
-    <div id="app"></div>
-    <div id="load">
-    	<i class="icon iconfont icon-jiazaizhong2"></i>
-    </div>
-    <!-- built files will be auto injected -->
-    <script src="static/js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
-    <!--修改了mui mui-action-back的点击点击事件-->
-    <script src="static/mui/js/mui.js" type="text/javascript" charset="utf-8"></script>
+			}
+			
+			#load i {
+				display: inline-block;
+				font-size: 36px;
+				animation: load 5s linear infinite;
+				width: 100%;
+				height: 100%;
+			}
+			
+			@keyframes load {
+				from {
+					transform: rotate(0deg);
+				}
+				to {
+					transform: rotate(360deg);
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app"></div>
+		<div id="load">
+			<i class="icon iconfont icon-jiazaizhong2"></i>
+		</div>
+		<!-- built files will be auto injected -->
+		<script src="static/js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+		<!--修改了mui mui-action-back的点击点击事件-->
+		<script src="static/mui/js/mui.js" type="text/javascript" charset="utf-8"></script>
 		<script src="static/swiper422/js/swiper.js" type="text/javascript" charset="utf-8"></script>
-		
+
 		<!--微信-->
 		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript" charset="utf-8"></script>
 		<!--高德地图-->
 		<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=1994ba35a603f806df16000f3799b1da"></script>
 		<!--百度地图-->
 		<script src="http://api.map.baidu.com/api?v=2.0&ak=UizjLo7Gm6HdYtAFWQhCiPetpGVQwtUs" type="text/javascript" charset="utf-8"></script>
-    <!--svn提交测试-->
-    <style type="text/css">
-    	.box6_bottom li:first-child{
-    		display: none;
-    	}
-    </style>
-    <script type="text/javascript">
-      	var liupeilin_ip='http://122.114.227.26:8899/zlwymaster';
-//    	var liupeilin_ip='http://192.168.2.202:8080/zlwymaster';
-//    	var liupeilin_ip='https://www.hzjifen.com/zlwymaster';
-    </script>
-  	<script type="text/javascript">
-  		mui.plusReady(function() {
-	    //首页返回键处理
-	    //处理逻辑：1秒内，连续两次按返回键，则退出应用；
-	    if(window.plus){
-			    plusReady();
-			}else{
-			    document.addEventListener('plusready',plusReady,false);
+		<!--svn提交测试-->
+		<style type="text/css">
+			.box6_bottom li:first-child {
+				display: none;
 			}
-			
-			var wgtVer=null;
-			function plusReady(){
-				//首页返回键处理
-				//处理逻辑：1秒内，连续两次按返回键，则退出应用；
-				var first = null;
-				plus.key.addEventListener('backbutton', function() {
-					//首次按键，提示‘再按一次退出应用’
-					if(!first) {
-						first = new Date().getTime();
-						mui.toast('再按一次退出应用');
-						setTimeout(function() {
-							first = null;
-						}, 1000);
-					} else {
-						if(new Date().getTime() - first < 1000) {
-							plus.runtime.quit();
+		</style>
+		<script type="text/javascript">
+			var liupeilin_ip = 'http://122.114.227.26:8899/zlwymaster';
+			//    	var liupeilin_ip='http://192.168.2.202:8080/zlwymaster';
+			//    	var liupeilin_ip='https://www.hzjifen.com/zlwymaster';
+		</script>
+		<script type="text/javascript">
+						//首页返回键处理
+						//处理逻辑：1秒内，连续两次按返回键，则退出应用；
+						if(window.plus) {
+							plusReady();
+						} else {
+							document.addEventListener('plusready', plusReady, false);
 						}
-					}
-				}, false);
-				plus.runtime.getProperty(plus.runtime.appid,function(inf){
-			        wgtVer=inf.version;
-			        console.log("当前应用版本："+wgtVer);
-					checkUpdate();
-			   	});	
-			}
-			
-			var checkUrl="http://m.hzjifen.com/apkdownload/edition.json";		//获取版本地址
-			var downloadUrl="http://m.hzjifen.com/apkdownload/hzjifen.apk"; 	//下载文件地址
-			function checkUpdate(){
-				$.ajax({
-					type:"get",
-					url:"http://m.hzjifen.com/apkdownload/edition.json",
-					async:true,
-					success:function(x){
-						console.log(JSON.stringify(x))
-						var newVer=x.edition;
-						if(wgtVer && newVer && (wgtVer!=newVer)){
-							plus.nativeUI.alert("检查到有新版本！",function(){
-								console.log('开始下载');
-								var dtask=plus.downloader.createDownload( downloadUrl, {}, function ( d, status ) {
-								    if ( status == 200 ) { // 下载成功
-								        var path = d.filename;
-								        console.log(d.filename);
-								        plus.runtime.install(path);
-								    }else{
-								    	//下载失败
-								        alert( "Download failed: " + status ); 
-								    }
-								});
-								dtask.start();
-					       	});
-						}
-					}
-				});
-			}
-  	</script>
-  </body>
-</html>
 
+						var wgtVer = null;
+
+						function plusReady() {
+							//首页返回键处理
+							//处理逻辑：1秒内，连续两次按返回键，则退出应用；
+							var first = null;
+							plus.key.addEventListener('backbutton', function() {
+								//首次按键，提示‘再按一次退出应用’
+								if(!first) {
+									first = new Date().getTime();
+									mui.toast('再按一次退出应用');
+									setTimeout(function() {
+										first = null;
+									}, 1000);
+								} else {
+									if(new Date().getTime() - first < 1000) {
+										plus.runtime.quit();
+									}
+								}
+							}, false);
+							plus.runtime.getProperty(plus.runtime.appid, function(inf) {
+								wgtVer = inf.version;
+								console.log("当前应用版本：" + wgtVer);
+//								checkUpdate();
+							});
+						}
+
+						var checkUrl = "http://m.hzjifen.com/apkdownload/edition.json"; //获取版本地址
+						var downloadUrl = "http://m.hzjifen.com/apkdownload/hzjifen.apk"; //下载文件地址
+						function checkUpdate() {
+							$.ajax({
+								type: "get",
+								url: "http://m.hzjifen.com/apkdownload/edition.json",
+								async: true,
+								success: function(x) {
+									console.log(JSON.stringify(x))
+									var newVer = x.edition;
+									if(wgtVer && newVer && (wgtVer != newVer)) {
+										plus.nativeUI.alert("检查到有新版本！", function() {
+											console.log('开始下载');
+											var dtask = plus.downloader.createDownload(downloadUrl, {}, function(d, status) {
+												if(status == 200) { // 下载成功
+													var path = d.filename;
+													console.log(d.filename);
+													plus.runtime.install(path);
+												} else {
+													//下载失败
+													alert("Download failed: " + status);
+												}
+											});
+											dtask.start();
+										});
+									}
+								}
+							});
+						}
+		</script>
+	</body>
+
+</html>

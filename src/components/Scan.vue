@@ -75,7 +75,8 @@
 					this.scan.close();
 				}
 				window.history.back();
-			}
+			},
+			
 		},
 		mounted:function(){
 			var this_1=this;
@@ -95,7 +96,12 @@
 					//		},1000)
 					this_1.scan.onmarked = this_1.onmarked; //识别成功事件
 					this_1.scan.start();	//开始扫描
-				},100)
+				},100);
+				
+				//按返回键
+				plus.key.addEventListener('backbutton', function() {
+					this_1.back();
+				}, false);
 			}
 		},
 		created:function(){
@@ -105,11 +111,13 @@
 </script>
 <style>
 	#Scan{
-		background: #000000;
 		height: 100%;
+		padding-bottom: 90px;
+		background: #000000;
 	}
 	
 	#Scan #Scan_box{
+		background: #000000;
 		height: 100%;
 	}
 	#Scan #Scan_box>div{
